@@ -1,6 +1,6 @@
 package com.nettyserver.netty;
 
-import com.nettyserver.pb.Messages;
+import com.nettyserver.pb.Common;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -9,21 +9,27 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Administrator on 2017/5/12.
  */
-public class ProtoBufHandler extends SimpleChannelInboundHandler<Messages.MessageWrapper>
+public class ProtoBufHandler extends SimpleChannelInboundHandler<Common.MessageWrapper>
 {
     Logger m_logger = LoggerFactory.getLogger(ProtoBufHandler.class);
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, Messages.MessageWrapper msgWrapper) throws Exception {
-        Messages.Person p = Messages.Person.parseFrom(msgWrapper.getMessage());
+    public void channelRead0(ChannelHandlerContext ctx, Common.MessageWrapper msgWrapper) throws Exception {
+        Common.Person p = Common.Person.parseFrom(msgWrapper.getMsg());
         m_logger.info(p.getName());
 
-        Messages.MessageWrapper newMsg = Messages.MessageWrapper.newBuilder()
+        Common.MessageWrapper newMsg = Common.MessageWrapper.newBuilder()
                 .setId(msgWrapper.getId())
-                .setMessage(p.toByteString())
+                .setMsg(p.toByteString())
                 .build();
 
         ctx.write(newMsg);
         ctx.flush();
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
+            throws Exception {
+        ctx.close();
     }
 }
