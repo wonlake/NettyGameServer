@@ -1,0 +1,16 @@
+package pb.message;
+
+option java_package = "com.nettyserver.pb"; 
+
+option optimize_for = SPEED;
+
+message MessageWrapper {
+	required int32 id = 1;
+	required bytes msg = 2;
+}
+
+message Person {
+	required string name = 1;
+	required int32 age = 2;
+}
+
