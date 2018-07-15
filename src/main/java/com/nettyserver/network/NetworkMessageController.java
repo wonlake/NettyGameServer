@@ -1,4 +1,4 @@
-package com.nettyserver.netty;
+package com.nettyserver.network;
 
 import org.springframework.stereotype.Component;
 

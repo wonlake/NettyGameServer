@@ -1,9 +1,7 @@
-package com.nettyserver.netty;
+package com.nettyserver.network;
 
-import com.nettyserver.pb.Common;
+import com.nettyserver.pb.CommonProto;
 import io.netty.channel.ChannelHandlerContext;
-
-import java.nio.channels.Channel;
 
 public class NetworkTask {
     public ChannelHandlerContext getChannel() {
@@ -16,13 +14,13 @@ public class NetworkTask {
 
     private ChannelHandlerContext channel;
 
-    public Common.MessageWrapper getMsg() {
+    public CommonProto.MessageWrapper getMsg() {
         return msg;
     }
 
-    public void setMsg(Common.MessageWrapper msg) {
+    public void setMsg(CommonProto.MessageWrapper msg) {
         this.msg = msg;
     }
 
-    private Common.MessageWrapper msg;
+    private CommonProto.MessageWrapper msg;
 }

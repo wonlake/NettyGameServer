@@ -1,6 +1,7 @@
 package com.nettyserver.netty;
 
-import com.nettyserver.pb.Common;
+import com.nettyserver.handler.INetworkMessageHandler;
+import com.nettyserver.pb.CommonProto;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import javax.annotation.PreDestroy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
+import com.nettyserver.network.*;
 
 @Component
 public class ClientManager {
@@ -111,7 +113,7 @@ public class ClientManager {
         threadPoolService.execute(specialThread);
     }
 
-    public void addTask(ChannelHandlerContext ctx, Common.MessageWrapper msg) {
+    public void addTask(ChannelHandlerContext ctx, CommonProto.MessageWrapper msg) {
         NetworkTask task = new NetworkTask();
         task.setChannel(ctx);
         task.setMsg(msg);

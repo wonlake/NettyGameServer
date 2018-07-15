@@ -8,8 +8,8 @@ message MessageWrapper {
 	required bytes msg = 2;
 }
 
-message Person {
-	required string name = 1;
-	required int32 age = 2;
+message LoginToken {
+	optional string token = 1;
+	optional int32 expired = 2;
 }
 

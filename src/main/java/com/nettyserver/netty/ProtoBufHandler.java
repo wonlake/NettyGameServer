@@ -1,21 +1,20 @@
 package com.nettyserver.netty;
 
-import com.nettyserver.pb.Common;
+import com.nettyserver.pb.CommonProto;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by Administrator on 2017/5/12.
  */
-public class ProtoBufHandler extends SimpleChannelInboundHandler<Common.MessageWrapper>
+public class ProtoBufHandler extends SimpleChannelInboundHandler<CommonProto.MessageWrapper>
 {
     Logger logger = LoggerFactory.getLogger(ProtoBufHandler.class);
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, Common.MessageWrapper msgWrapper) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx, CommonProto.MessageWrapper msgWrapper) throws Exception {
         ClientManager.getInstance().addTask(ctx, msgWrapper);
     }
 

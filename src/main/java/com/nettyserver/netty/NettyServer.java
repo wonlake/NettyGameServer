@@ -1,6 +1,6 @@
 package com.nettyserver.netty;
 
-import com.nettyserver.pb.Common;
+import com.nettyserver.pb.CommonProto;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -68,7 +68,7 @@ public class NettyServer {
                                 //.addLast("encoder", new HttpResponseEncoder())
                                 //.addLast(new ServerHandler())
                                 .addLast("decoder", new ProtobufVarint32FrameDecoder())
-                                .addLast("protoDecoder", new ProtobufDecoder(Common.MessageWrapper.getDefaultInstance()))
+                                .addLast("protoDecoder", new ProtobufDecoder(CommonProto.MessageWrapper.getDefaultInstance()))
                                 .addLast("encoder", new ProtobufVarint32LengthFieldPrepender())
                                 .addLast("protoEncoder", new ProtobufEncoder())
                                 .addLast("handler", new ProtoBufHandler());

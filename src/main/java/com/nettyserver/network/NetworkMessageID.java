@@ -1,4 +1,4 @@
-package com.nettyserver.netty;
+package com.nettyserver.network;
 
 public enum NetworkMessageID {
     MESSAGE_NONE,

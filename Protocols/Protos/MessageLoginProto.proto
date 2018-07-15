@@ -3,13 +3,13 @@ package pb.message;
 option java_package = "com.nettyserver.pb";
 option optimize_for = SPEED;
 
-message LoginInfo {
+message LoginRequest {
     optional int32 aid = 1;
     optional string passport = 2;
 	optional string password = 3;
 }
 
-message LoginToken {
-    optional string token = 1;
-    optional string out_of_date = 2;
+message LoginResponse {
+    required int32 error = 1;
+    optional bytes loginToken = 2;
 }
