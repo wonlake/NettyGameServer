@@ -1,7 +1,6 @@
 package pb.message;
 
-option java_package = "com.nettyserver.pb"; 
-
+option java_package = "com.nettyserver.pb";
 option optimize_for = SPEED;
 
 message MessageWrapper {

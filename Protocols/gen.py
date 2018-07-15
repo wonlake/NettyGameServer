@@ -4,6 +4,12 @@ import os
 cs_dir = "cs_output"
 java_dir = "java_output"
 
+if not os.path.exists(cs_dir):
+	os.mkdir(cs_dir)
+
+if not os.path.exists(java_dir):
+	os.mkdir(java_dir)
+	
 cur_path = os.getcwd()
 proto_path = cur_path + r"\Protos"
 
